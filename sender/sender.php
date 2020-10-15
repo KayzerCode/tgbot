@@ -1,9 +1,7 @@
 <?php
 require_once __DIR__ . '/config/config.php';
-
+require_once __DIR__ . '/msgproc/msgproc.php';
 # текст объявления #
-$text = 'Hello! Im sender bot!';
-$text = urlencode($text);
 
 # рассылаем уведомления #
 foreach ($subscibers as $chat) {
