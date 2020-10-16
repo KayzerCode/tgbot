@@ -3,7 +3,7 @@ $body = file_get_contents('php://input');
 $arr = json_decode($body, true); 
  
 include_once ('telegramgclass.php');   
-require_once __DIR__ . '/config/config.php';
+require_once '/config/config.php';
 
 $tg = new tg($token);
 
