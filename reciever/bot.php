@@ -1,5 +1,6 @@
 <?php
 include('vendor/autoload.php');
+include('menu.php');
 require_once ('config/config.php');
 
 use Telegram\Bot\Api;
@@ -16,6 +17,7 @@ $l_name = $res['message']['from']['last_name'];
 
 
 if($text == "/start") {
-    $reply = "Hello, " . $f_name;
-    $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
+    $reply = "Menu: ";
+	$reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $menu, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
+	$telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 } 
