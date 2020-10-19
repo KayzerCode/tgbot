@@ -4,10 +4,6 @@ require_once ('config/config.php');
 
 use Telegram\Bot\Api;
 
-echo $tgtoken;
-
-return;
-
 $telegram = new Api($tgtoken);
 $res = $telegram->getWebhookUpdates();
 
