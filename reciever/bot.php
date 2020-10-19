@@ -2,7 +2,7 @@
 include('vendor/autoload.php');
 require_once ('/config/config.php');
 
-use Telegram\Bot\Api
+use Telegram\Bot\Api;
 
 telegram = new Api($tgtoken);
 $res = telegram->getWebhookUpdates();
