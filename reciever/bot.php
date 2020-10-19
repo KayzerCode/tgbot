@@ -1,16 +1,19 @@
 <?php
-$body = file_get_contents('php://input'); 
-$arr = json_decode($body, true); 
- 
-include_once ('telegramgclass.php');   
+include('vendor/autoload.php');
 require_once ('/config/config.php');
 
-$tg = new tg($tgtoken);
+use Telegram\Bot\Api
 
-$chat_id = '394569644';//$arr['message']['chat']['id'];
-$userTgId = $arr['message']['from']['id'];
-$text = $arr['message']['text'];
-$coord1 = $arr['message']['location']['latitude'];
-$coord2 = $arr['message']['location']['longitude'];
+telegram = new Api($tgtoken);
+$res = telegram->getWebhookUpdates();
 
-$tg->send($chat_id, "Нас не догонят!");
+$chat_id = $res['message']['chat']['id'];
+$userTgId = $res['message']['from']['id'];
+$text = $res['message']['text'];
+$coord1 = $res['message']['location']['latitude'];
+$coord2 = $res['message']['location']['longitude'];
+
+if($text == "/start") {
+    $reply = "Hello World!";
+    telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
+}
