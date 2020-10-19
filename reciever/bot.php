@@ -1,6 +1,6 @@
 <?php
 include('vendor/autoload.php');
-require_once ('/config/config.php');
+require_once ('config/config.php');
 
 //use Telegram\Bot\Api;
 
