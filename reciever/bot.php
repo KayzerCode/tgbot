@@ -10,10 +10,12 @@ $res = $telegram->getWebhookUpdates();
 $chat_id = $res['message']['chat']['id'];
 $userTgId = $res['message']['from']['id'];
 $text = $res['message']['text'];
-$coord1 = $res['message']['location']['latitude'];
-$coord2 = $res['message']['location']['longitude'];
+$u_name = $res['message']['from']['username'];
+$f_name = $res['message']['from']['first_name'];
+$l_name = $res['message']['from']['last_name'];
+
 
 if($text == "/start") {
-    $reply = "Hello World!";
+    $reply = "Hello, " . $f_name;
     $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
 } 
