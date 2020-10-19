@@ -4,6 +4,8 @@ require_once ('/config/config.php');
 
 use Telegram\Bot\Api;
 
+echo $tgtoken;
+
 telegram = new Api($tgtoken);
 $res = telegram->getWebhookUpdates();
 
@@ -15,5 +17,5 @@ $coord2 = $res['message']['location']['longitude'];
 
 if($text == "/start") {
     $reply = "Hello World!";
-    telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
+    //telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
 }
