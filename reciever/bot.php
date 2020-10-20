@@ -30,6 +30,6 @@ if($text == "/start") {
 	$telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 } }elseif($text == "Назад"){
     $reply = "Краткий или полный?";
-	$reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $menu1, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
+	$reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $menu, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
 	$telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 } 
