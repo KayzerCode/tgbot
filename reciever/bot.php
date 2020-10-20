@@ -17,7 +17,15 @@ $l_name = $res['message']['from']['last_name'];
 
 
 if($text == "/start") {
-    $reply = "Menu: ";
+    $reply = "Выберете отчет: ";
 	$reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $menu, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
+	$telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
+}elseif($text == "Отчет 1"){
+    $reply = "Краткий или полный?";
+	$reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $menu2, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
+	$telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
+}elseif($text == "Отчет 2"){
+    $reply = "Краткий или полный?";
+	$reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $menu3, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
 	$telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 } 
