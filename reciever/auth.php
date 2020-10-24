@@ -11,9 +11,12 @@
 
 
 function addToLog($message) {
-    # parse message to ...
-    $file = 'log.txt';    
-    $message .= "\r\n Mess: ";
+    # get log file from config later
+    $file = 'log.txt';
+    if (!checkFile($file)) {
+        # stop here
+    }
+    $message = "Mess: " . $message . "\r\n";
     // Write the contents to the file, 
     // using the FILE_APPEND flag to append the content to the end of the file
     // and the LOCK_EX flag to prevent anyone else writing to the file at the same time
@@ -23,4 +26,9 @@ function addToLog($message) {
 function checkUser($message) {
     # parse message to ...
     echo $message . "parse message to ...";
+}
+
+function checkFile($filename) {
+    # if exists
+    return true;
 }
