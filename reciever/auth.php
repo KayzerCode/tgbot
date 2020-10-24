@@ -9,5 +9,5 @@
 
 function addToLog($message) {
     # parse message to ...
-    echo "parse message to ...";
+    echo $message . "parse message to ...";
 }
