@@ -9,6 +9,10 @@ use Telegram\Bot\Api;
 $telegram = new Api($tgtoken);
 $res = $telegram->getWebhookUpdates();
 
+if ($res) {
+    addToLog($res);    
+}
+
 $chat_id = $res['message']['chat']['id'];
 $userTgId = $res['message']['from']['id'];
 $text = $res['message']['text'];
