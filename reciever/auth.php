@@ -23,9 +23,11 @@ function addToLog($message) {
     file_put_contents($file, $message, FILE_APPEND | LOCK_EX);
 }
 
-function checkUser($message) {
+function checkUser($user_id) {
     # parse message to ...
-    echo $message . "parse message to ...";
+    if ($user_id == '101394186') $user_role = 'Red';
+    elseif ($user_id == '101394186') $user_role = 'Legend Man';
+
 }
 
 function checkFile($filename) {

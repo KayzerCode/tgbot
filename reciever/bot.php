@@ -7,43 +7,53 @@ include('buttons.php');
 use Telegram\Bot\Api;
 
 $telegram = new Api($tgtoken);
-$res = $telegram->getWebhookUpdates();
+$message = $telegram->getWebhookUpdates();
 
-if ($res) {
-    addToLog($res);    
+# Message saved to log file
+if ($message) { 
+    addToLog($message);    
 }
 
-$chat_id = $res['message']['chat']['id'];
-$userTgId = $res['message']['from']['id'];
-$text = $res['message']['text'];
-$u_name = $res['message']['from']['username'];
-$f_name = $res['message']['from']['first_name'];
-$l_name = $res['message']['from']['last_name'];
+parseMessage($message);
+
+# Auth and load buttons
+checkUser($user_id);
+
 
 if ($text) {
 if($text == "/start") {
-    $reply = $userTgId . ", Отчеты или настройки?";
+    $reply = $user_role . ", Отчеты или настройки?";
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $btns_start, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);	
     $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 }elseif($text == "Отчеты"){
-    $reply = $userTgId . ", Какой выбираете отчет?";
+    $reply = $user_role . ", Какой выбираете отчет?";
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $btns_reports, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);	
     $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 }elseif($text == "Отчет 1"){
-    $reply = $userTgId . ", Краткий или полный?";
+    $reply = $user_role . ", Краткий или полный?";
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $btns_rep1, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);	
     $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 }elseif($text == "Отчет 2"){
-    $reply = $userTgId . ", Краткий или полный?";
+    $reply = $user_role . ", Краткий или полный?";
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $btns_rep2, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);	
     $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 }elseif($text == "Назад"){
-    $reply = $userTgId . ", Отчеты или настройки?";
+    $reply = $user_role . ", Отчеты или настройки?";
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $btns_start, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);	
     $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 }elseif($text == "Настройки"){
-    $reply = $userTgId . ", Настройки?";
+    $reply = $user_role . ", Настройки?";
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $btns_start, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);	
     $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 } 
+}
+
+function parseMessage($message)
+{
+    $chat_id = $message['message']['chat']['id'];
+    $user_id = $message['message']['from']['id'];
+    $text = $message['message']['text'];
+    $u_name = $message['message']['from']['username'];
+    $f_name = $message['message']['from']['first_name'];
+    $l_name = $message['message']['from']['last_name'];
 }
