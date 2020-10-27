@@ -14,8 +14,12 @@ if ($message) {
     addToLog($message);    
 }
 
-parseMessage($message);
-
+$chat_id = $message['message']['chat']['id'];
+$user_id = $message['message']['from']['id'];
+$text = $message['message']['text'];
+$u_name = $message['message']['from']['username'];
+$f_name = $message['message']['from']['first_name'];
+$l_name = $message['message']['from']['last_name'];
 # Auth and load buttons
 checkUser($user_id);
 
@@ -46,14 +50,4 @@ if($text == "/start") {
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $btns_start, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);	
     $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 } 
-}
-
-function parseMessage($message)
-{
-    $chat_id = $message['message']['chat']['id'];
-    $user_id = $message['message']['from']['id'];
-    $text = $message['message']['text'];
-    $u_name = $message['message']['from']['username'];
-    $f_name = $message['message']['from']['first_name'];
-    $l_name = $message['message']['from']['last_name'];
 }
