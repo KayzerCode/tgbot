@@ -26,27 +26,27 @@ $user_role = checkUser($user_id);
 
 if ($text) {
 if($text == "/start") {
-    $reply = $user_role . ", Отчеты или настройки?";
+    $reply = $user_role . ", Отчеты или настройки? (" . $u_name . ")";
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $btns_start, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);	
     $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 }elseif($text == "Отчеты"){
-    $reply = $user_role . ", Какой выбираете отчет?";
+    $reply = $user_role . ", Какой выбираете отчет? (" . $u_name . ")";
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $btns_reports, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);	
     $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 }elseif($text == "Отчет 1"){
-    $reply = $user_role . ", Краткий или полный?";
+    $reply = $user_role . ", Краткий или полный? (" . $u_name . ")";
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $btns_rep1, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);	
     $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 }elseif($text == "Отчет 2"){
-    $reply = $user_role . ", Краткий или полный?";
+    $reply = $user_role . ", Краткий или полный? (" . $u_name . ")";
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $btns_rep2, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);	
     $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 }elseif($text == "Назад"){
-    $reply = $user_role . ", Отчеты или настройки?";
+    $reply = $user_role . ", Отчеты или настройки? (" . $u_name . ")";
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $btns_start, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);	
     $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 }elseif($text == "Настройки"){
-    $reply = $user_role . ", Настройки?";
+    $reply = $user_role . ", Настройки? (" . $u_name . ")";
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $btns_start, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);	
     $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
 } 

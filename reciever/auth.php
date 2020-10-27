@@ -28,7 +28,6 @@ function checkUser($user_id) {
     if ($user_id == '101394186') $user_role = 'Red';
     elseif ($user_id == '394569644') $user_role = 'Legend Man';
     return $user_role;
-
 }
 
 function checkFile($filename) {
