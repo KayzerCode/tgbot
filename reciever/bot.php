@@ -20,9 +20,9 @@ $text = $message['message']['text'];
 $u_name = $message['message']['from']['username'];
 $f_name = $message['message']['from']['first_name'];
 $l_name = $message['message']['from']['last_name'];
-# Auth and load buttons
-checkUser($user_id);
 
+# Auth and load buttons
+$user_role = checkUser($user_id);
 
 if ($text) {
 if($text == "/start") {
