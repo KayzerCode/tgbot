@@ -13,5 +13,6 @@ $response = $telegram->sendPhoto([
 ]);
 
 $messageId = $response->getMessageId();
+echo $messageId;
 
 ?>
