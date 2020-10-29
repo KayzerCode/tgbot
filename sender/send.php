@@ -3,13 +3,11 @@ include('vendor/autoload.php');
 require_once ('config/config.php');
 
 use Telegram\Bot\Api;
-
 $telegram = new Api($tgtoken);
 
-$response = $telegram->sendPhoto([
-    'chat_id' => '374918510', 
-    'photo' => 'photo.jpg', 
-    'caption' => 'Some caption'
+$response = $telegram->sendMessage([
+    'chat_id' => '394569644', 
+    'text' => 'Hello World'
 ]);
 
 $messageId = $response->getMessageId();
