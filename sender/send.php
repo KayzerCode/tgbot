@@ -1,8 +1,9 @@
 <?php
-require ('vendor/autoload.php');
+unclude ('../vendor/autoload.php');
 require_once ('config/config.php');
 
 use Telegram\Bot\Api;
+
 $telegram = new Api($tgtoken);
 
 $response = $telegram->sendMessage([
