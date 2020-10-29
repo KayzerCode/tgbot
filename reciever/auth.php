@@ -4,8 +4,8 @@
 # Add new user
 # Fields to use: id, user_id, 
 
-#394569644 - Kayzer
-#101394186 - RedBlack
+#101394186 - Kayzer
+#394569644 - RedBlack
 
 // if (!$message) return false;
 
