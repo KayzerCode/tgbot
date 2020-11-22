@@ -1,8 +1,8 @@
 <?php
-include('vendor/autoload.php');
-require_once ('config/config.php');
-include('auth.php');
-include('buttons.php');
+include ('vendor/autoload.php');
+require_once ('config/config.php'); // $tgtoken goes from config
+require_once ('function.php');
+require_once ('buttons.php');
 
 use Telegram\Bot\Api;
 
@@ -11,18 +11,15 @@ $message = $telegram->getWebhookUpdates();
 
 # Message saved to log file
 if ($message) { 
-    addToLog($message);    
+    addToLog($message);
+    parseMsg($message);
 }
 
-$chat_id = $message['message']['chat']['id'];
-$user_id = $message['message']['from']['id'];
-$text = $message['message']['text'];
-$u_name = $message['message']['from']['username'];
-$f_name = $message['message']['from']['first_name'];
-$l_name = $message['message']['from']['last_name'];
+if ($auth) {
+    // using auth to determine role
+    loadButtons(); // load buttons 
 
-# Auth and load buttons
-$user_role = checkUser($user_id);
+}
 
 if ($text) {
 if($text == "/start") {
